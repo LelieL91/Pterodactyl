@@ -35,4 +35,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/LelieL91/pterodactyl:${{ matrix.os }}
+            ghcr.io/leliel91/pterodactyl:${{ matrix.os }}
