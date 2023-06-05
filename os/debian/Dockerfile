@@ -2,7 +2,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH debian:bookworm-slim
 
 LABEL       author="LelieL91" maintainer="admin@factotum.ovh"
 
-LABEL       org.opencontainers.image.source=""
+LABEL       org.opencontainers.image.source="https://github.com/leliel91/pterodactyl"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV          DEBIAN_FRONTEND noninteractive
