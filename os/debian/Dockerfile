@@ -1,9 +1,9 @@
-FROM        --platform=$TARGETOS/$TARGETARCH debian:bookworm-slim
+FROM         --platform=$TARGETOS/$TARGETARCH debian:bookworm-slim
 
-LABEL       author="LelieL91" maintainer="admin@factotum.ovh"
+LABEL        author="LelieL91" maintainer="admin@factotum.ovh"
 
-LABEL       org.opencontainers.image.source="https://github.com/leliel91/pterodactyl"
-LABEL       org.opencontainers.image.licenses=MIT
+LABEL        org.opencontainers.image.source="https://github.com/leliel91/pterodactyl"
+LABEL        org.opencontainers.image.licenses=MIT
 
 ENV          DEBIAN_FRONTEND noninteractive
 
@@ -25,7 +25,6 @@ RUN          apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl t
 ## Configure locale
 RUN          update-locale lang=en_US.UTF-8 \
              && dpkg-reconfigure --frontend noninteractive locales
-
 
 WORKDIR     /home/container
 
