@@ -17,6 +17,7 @@ jobs:
       matrix:
         os:
           - debian
+          - jellyfin
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
