@@ -31,7 +31,7 @@ RUN         adduser -D -h /home/container container
 
 ENV         USER=container HOME=/home/container
 
-RUN         apk add --update --no-cache ca-certificates tzdata libgcc libstdc++6
+RUN         apk add --update --no-cache ca-certificates tzdata libgcc libstdc++
 
 USER        container
 
