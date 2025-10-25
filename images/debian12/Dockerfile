@@ -7,12 +7,6 @@ LABEL        org.opencontainers.image.licenses=MIT
 
 ENV          DEBIAN_FRONTEND noninteractive
 
-RUN          useradd -m -d /home/container -s /bin/bash container
-
-RUN          ln -s /home/container/ /nonexistent
-
-ENV          USER=container HOME=/home/container
-
 ## Update base packages
 RUN          apt update \
              && apt upgrade -y
@@ -27,6 +21,10 @@ RUN          apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl t
 RUN          update-locale lang=en_US.UTF-8 \
              && dpkg-reconfigure --frontend noninteractive locales
 
+# Configure user
+RUN         useradd -m -d /home/container -s /bin/bash container
+USER        container
+ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
