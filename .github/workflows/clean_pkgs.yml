@@ -5,7 +5,7 @@ on:
 
 jobs:
   delete-container-versions:
-    uses: .github/workflows/clean_old_pkgs.yml
+    uses: ./.github/workflows/clean_old_pkgs.yml
     with:
-      package_name: 'pterodactyl:debian'
+      package_name: 'pterodactyl'
       package_type: 'container'
