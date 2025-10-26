@@ -13,7 +13,10 @@ jobs:
     name: "pterodactyl:${{ matrix.images }}"
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     strategy:
       fail-fast: false
       matrix:
