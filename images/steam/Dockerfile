@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND=noninteractive
 ## Update base packages + Install dependencies + Clean temp files + Configure locale
 RUN         apt update \
             && apt -y upgrade \
-            && apt -y --no-install-recommends install curl lib32gcc-s1 libc6-i386 locales iproute2 \
+            && apt -y --no-install-recommends install curl lib32gcc-s1 libc6-i386 libicu-dev locales iproute2 \
             && apt clean \
             && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             && apt -y autoremove \
