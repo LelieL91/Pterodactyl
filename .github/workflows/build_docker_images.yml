@@ -36,7 +36,8 @@ jobs:
         with:
           context: ./images/${{ matrix.images }}
           file: ./images/${{ matrix.images }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          #platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
