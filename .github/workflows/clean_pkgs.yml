@@ -7,5 +7,5 @@ jobs:
   delete-container-versions:
     uses: ./.github/workflows/clean_old_pkgs.yml
     with:
-      package_name: 'leliel91/pterodactyl'
+      package_name: 'LelieL91/pterodactyl'
       package_type: 'container'
