@@ -21,7 +21,7 @@ jobs:
       - name: Delete all untagged container versions
         uses: actions/delete-package-versions@v5
         with:
-          delete-only-untagged-versions: 'false'
+          delete-only-untagged-versions: 'true'
           min-versions-to-keep: ${{ inputs.min_versions_to_keep }}
           package-name: ${{ inputs.package_name }}
           package-type: ${{ inputs.package_type }}
