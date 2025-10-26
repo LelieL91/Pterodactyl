@@ -6,7 +6,7 @@ LABEL       author="LelieL91" maintainer="admin@factotum.ovh"
 LABEL       org.opencontainers.image.source="https://github.com/leliel91/pterodactyl"
 LABEL       org.opencontainers.image.licenses=MIT
 
-ENV         DEBIAN_FRONTEND noninteractive
+ENV         DEBIAN_FRONTEND=noninteractive
 
 ## Update base packages + Install dependencies + Clean temp files + Configure locale
 RUN         apt update \
