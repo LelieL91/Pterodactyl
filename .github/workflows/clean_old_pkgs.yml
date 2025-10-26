@@ -29,4 +29,4 @@ jobs:
           min-versions-to-keep: ${{ inputs.min_versions_to_keep }}
           package-name: ${{ inputs.package_name }}
           package-type: ${{ inputs.package_type }}
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
