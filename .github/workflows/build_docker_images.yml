@@ -12,16 +12,17 @@ jobs:
   push:
     name: "pterodactyl:${{ matrix.images }}"
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      attestations: write
-      id-token: write
+    #permissions:
+      #contents: read
+      #packages: write
+      #attestations: write
+      #id-token: write
     strategy:
       fail-fast: false
       matrix:
         images:
           - steam
+          - steam-installer
     steps:
       - uses: actions/checkout@v5.0.0
       - name: Login to GitHub Container Registry
