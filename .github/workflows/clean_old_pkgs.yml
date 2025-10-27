@@ -12,7 +12,7 @@ on:
       min_versions_to_keep:
         required: false
         type: number
-        default: 10
+        default: 3
 
 permissions:
   packages: write
@@ -25,6 +25,7 @@ jobs:
       - name: Delete all untagged container versions
         uses: actions/delete-package-versions@v5
         with:
+          owner: ${{ github.repository_owner }}
           delete-only-untagged-versions: 'true'
           min-versions-to-keep: ${{ inputs.min_versions_to_keep }}
           package-name: ${{ inputs.package_name }}
