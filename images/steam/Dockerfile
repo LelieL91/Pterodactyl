@@ -9,9 +9,8 @@ LABEL       org.opencontainers.image.licenses=MIT
 ENV         DEBIAN_FRONTEND=noninteractive
 
 ## Update base packages + Install dependencies + Clean temp files + Configure locale
-RUN         apt update \
-            && apt -y upgrade \
-            && apt -y --no-install-recommends install ca-certificates curl lib32gcc-s1 libc6-i386 libicu-dev locales iproute2 \
+RUN         apt update && apt -y upgrade && apt -y --no-install-recommends install \
+            ca-certificates curl lib32gcc-s1 libicu-dev locales iproute2 gdb \
             && apt clean \
             && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             && apt -y autoremove \
@@ -25,5 +24,5 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY    ./entrypoint.sh /entrypoint.sh
-CMD   [ "/bin/bash", "/entrypoint.sh" ]
+COPY        ./entrypoint.sh /entrypoint.sh
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
