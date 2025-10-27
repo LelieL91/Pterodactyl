@@ -10,6 +10,9 @@ on:
     paths:
       - images/**
 
+env:
+  IMAGES: '[ "steam", "steam-installer" ]'
+
 jobs:
   push:
     name: "Build pterodactyl:${{ matrix.images }} Image"
@@ -17,9 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        images:
-          - steam
-          - steam-installer
+        images: ${{ fromJSON(env.IMAGES) }}
     steps:
       - uses: actions/checkout@v5.0.0
 
@@ -46,17 +47,20 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
+            ghcr.io/leliel91/${{ matrix.images }}:latest
 
   cleanup:
     name: Purge old GHCR images
     needs: push
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        images: ${{ fromJSON(env.IMAGES) }}
     steps:
       - name: Cleanup untagged GHCR images
         uses: actions/delete-package-versions@v5
         with:
           delete-only-untagged-versions: 'true'
-          min-versions-to-keep: 10
-          package-name: 'pterodactyl'
+          min-versions-to-keep: 2
+          package-name: '${{ matrix.images }}'
           package-type: 'container'
