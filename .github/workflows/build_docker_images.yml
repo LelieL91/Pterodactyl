@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   #schedule:
     #- cron: "0 0 * * 1"
-  #push:
-    #branches:
-      #- main
-    #paths:
-      #- images/**
+  push:
+    branches:
+      - main
+    paths:
+      - images/**
 
 jobs:
   push:
