@@ -48,12 +48,9 @@ jobs:
             ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
 
       - name: Cleanup untagged GHCR images
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGE_NAME: pterodactyl
-        run: |
-          echo "Deleting untagged images for $PACKAGE_NAME/${{ matrix.images }}"
-          gh api "users/${{ github.repository_owner }}/packages/container/${PACKAGE_NAME}/versions" \
-            --paginate \
-            -q '.[] | select(.metadata.container.tags | length == 0) | .id' \
-            | xargs -I {} gh api --method DELETE "users/${{ github.repository_owner }}/packages/container/${PACKAGE_NAME}/versions/{}"
+        uses: actions/delete-package-versions@v5
+        with:
+          delete-only-untagged-versions: 'true'
+          min-versions-to-keep: 1
+          package-name: 'pterodactyl'
+          package-type: 'container'
