@@ -44,7 +44,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
+            ghcr.io/leliel91/pterodactyl-${{ matrix.images }}:latest
 
   cleanup:
     needs: push
@@ -60,5 +60,5 @@ jobs:
         with:
           delete-only-untagged-versions: 'true'
           min-versions-to-keep: 2
-          package-name: 'pterodactyl'
+          package-name: 'pterodactyl-${{ matrix.images }}'
           package-type: 'container'
