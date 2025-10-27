@@ -51,6 +51,6 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           delete-only-untagged-versions: 'true'
-          min-versions-to-keep: 1
+          min-versions-to-keep: 2
           package-name: 'pterodactyl'
           package-type: 'container'
