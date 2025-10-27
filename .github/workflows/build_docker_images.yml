@@ -10,9 +10,6 @@ on:
     paths:
       - images/**
 
-env:
-  IMAGES: '[ "steam", "steam-installer" ]'
-
 jobs:
   push:
     name: "Build pterodactyl:${{ matrix.images }} Image"
@@ -20,7 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        images: ${{ fromJSON(env.IMAGES) }}
+        images:
+          - steam
+          - steam-installer
     steps:
       - uses: actions/checkout@v5.0.0
 
@@ -55,7 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        images: ${{ fromJSON(env.IMAGES) }}
+        images:
+          - steam
+          - steam-installer
     steps:
       - name: Cleanup untagged GHCR images
         uses: actions/delete-package-versions@v5
