@@ -46,10 +46,19 @@ jobs:
           tags: |
             ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
 
+  cleanup:
+    needs: push
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        images:
+          - steam
+          - steam-installer
+    steps:
       - name: Cleanup untagged GHCR images
         uses: actions/delete-package-versions@v5
         with:
           delete-only-untagged-versions: 'true'
           min-versions-to-keep: 2
-          package-name: 'pterodactyl/${{ matrix.images }}'
+          package-name: 'pterodactyl'
           package-type: 'container'
