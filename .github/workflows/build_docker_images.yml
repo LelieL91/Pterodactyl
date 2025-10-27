@@ -12,7 +12,7 @@ on:
 
 jobs:
   push:
-    name: "pterodactyl:${{ matrix.images }}"
+    name: "Build pterodactyl:${{ matrix.images }} Image"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -47,6 +47,7 @@ jobs:
             ghcr.io/leliel91/pterodactyl:${{ matrix.images }}
 
   cleanup:
+    name: Purge old GHCR images
     needs: push
     runs-on: ubuntu-latest
     steps:
