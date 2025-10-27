@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND=noninteractive
 ## Update base packages + Install dependencies + Clean temp files + Configure locale
 RUN         apt update \
             && apt -y upgrade \
-            && apt -y --no-install-recommends install ca-certificates curl lib32gcc-s1 libc6-i386 locales git wget jq unzip \
+            && apt -y --no-install-recommends install ca-certificates curl lib32gcc-s1 locales git wget jq unzip \
             && apt clean \
             && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             && apt -y autoremove \
