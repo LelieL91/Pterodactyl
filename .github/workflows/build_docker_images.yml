@@ -62,6 +62,6 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           delete-only-untagged-versions: 'true'
-          min-versions-to-keep: 10
+          min-versions-to-keep: 6
           package-name: '${{ matrix.images }}'
           package-type: 'container'
